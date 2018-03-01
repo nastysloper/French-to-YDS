@@ -6,9 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,15 +16,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List conversion = new ArrayList<String>();
-        ListView listView = (ListView) findViewById(R.id.french_to_yds_list);
-        Scanner scanner = new Scanner(getResources().openRawResource(R.raw.french_grades));
+        List french_to_yds_grades = new ArrayList<String>();
+        ListView listView1 = (ListView) findViewById(R.id.conversion_list);
+
+        Scanner scanner = new Scanner(getResources().openRawResource(R.raw.french_grade_conversion));
         while (scanner.hasNextLine()) {
-            conversion.add(scanner.nextLine());
+            french_to_yds_grades.add(scanner.nextLine());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, new ArrayList<String>(conversion));
-        listView.setAdapter(adapter);
+                android.R.layout.simple_list_item_1, new ArrayList<String>(french_to_yds_grades));
+        listView1.setAdapter(adapter);
+
     }
 }
